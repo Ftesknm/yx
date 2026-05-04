@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>☁オンライン広場DX - 官方下载</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            font-family: "微软雅黑", sans-serif;
+            color: #fff;
+            background: #050a18;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+        }
+
+        h1 {
+            font-size: 34px;
+            text-align: center;
+            margin-bottom: 20px;
+            text-shadow: 0 0 8px #4fc3ff, 0 0 16px #2196f3, 0 0 30px #1976d2;
+            animation: textGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes textGlow {
+            from {text-shadow: 0 0 8px #4fc3ff, 0 0 16px #2196f3;}
+            to {text-shadow: 0 0 15px #4fc3ff, 0 0 30px #2196f3, 0 0 45px #0d47a1;}
+        }
+
+        .info {
+            font-size: 18px;
+            color: #cce0ff;
+            text-align: center;
+            line-height: 2.2;
+            margin-bottom: 30px;
+            text-shadow: 0 0 6px #2196f377;
+        }
+
+        .desc-box {
+            max-width: 720px;
+            padding: 20px 25px;
+            margin-bottom: 45px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 14px;
+            backdrop-filter: blur(8px);
+        }
+        .game-desc {
+            font-size: 16px;
+            color: #b8d8f5;
+            line-height: 1.9;
+            text-align: center;
+            text-shadow: 0 0 4px #2196f344;
+        }
+
+        /* 双下载按钮布局 */
+        .download-group {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .download-btn {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 40px;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            color: #fff;
+            background: linear-gradient(45deg, #1565c0, #29b6f6);
+            border-radius: 16px;
+            box-shadow: 0 0 12px #2196f3, 0 0 25px #2196f366;
+            transition: 0.3s all ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 20px #4fc3ff, 0 0 40px #2196f388;
+        }
+
+        /* Win11四格图标 */
+        .icon-win {
+            font-size: 20px;
+        }
+
+        .github-box {
+            margin-top: 10px;
+        }
+        .github-link {
+            color: #ffffff;
+            font-size: 18px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-shadow: 0 0 8px #9999ff;
+            transition: 0.3s;
+        }
+        .github-link:hover {
+            color: #60b8ff;
+            text-shadow: 0 0 12px #60b8ff;
+        }
+        .github-link i {
+            font-size: 24px;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 35px;
+            font-size: 15px;
+            color: #82a8d8;
+            text-shadow: 0 0 4px #2196f355;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="bg-canvas"></canvas>
+
+    <h1>☁オンライン広場DX(p.update)サーバー2__</h1>
+
+    <div class="info">
+        多人联机游戏<br>
+        制作人：张塬林<br>
+        制作工具：Turbowarp
+    </div>
+
+    <div class="desc-box">
+        <div class="game-desc">
+            本作是一款制作精美的多人联机休闲游戏，画面打磨细致，玩法丰富有趣。
+            支持多人在线联机互动，操作简单易上手，游玩体验流畅舒适。
+            邀请好友一同进入线上广场，开启轻松欢乐的联机冒险之旅。
+        </div>
+    </div>
+
+    <!-- 带Win11四格图标的下载按钮 -->
+    <div class="download-group">
+        <a href="https://easylink.cc/608gv3" class="download-btn" target="_blank">
+            <i class="fa fa-windows icon-win"></i>
+            64位 下载
+        </a>
+        <a href="https://easylink.cc/2ixxer" class="download-btn" target="_blank">
+            <i class="fa fa-windows icon-win"></i>
+            32位 下载
+        </a>
+    </div>
+
+    <div class="github-box">
+        <a class="github-link" href="https://github.com/" target="_blank">
+            <i class="fa fa-github"></i> GitHub 开源仓库
+        </a>
+    </div>
+
+    <div class="footer">
+        © 2026 张塬林 | Turbowarp 制作出品
+    </div>
+
+    <script>
+        const canvas = document.getElementById('bg-canvas');
+        const ctx = canvas.getContext('2d');
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        canvas.width = w;
+        canvas.height = h;
+
+        let particles = [];
+        const count = 80;
+
+        class Particle{
+            constructor(){
+                this.x = Math.random() * w;
+                this.y = Math.random() * h;
+                this.r = Math.random() * 2 + 1;
+                this.sx = Math.random() * 0.6 - 0.3;
+                this.sy = Math.random() * 0.6 - 0.3;
+            }
+            draw(){
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+                ctx.fillStyle = 'rgba(79, 195, 255, 0.6)';
+                ctx.fill();
+            }
+            update(){
+                this.x += this.sx;
+                this.y += this.sy;
+                if(this.x < 0 || this.x > w) this.sx *= -1;
+                if(this.y < 0 || this.y > h) this.sy *= -1;
+                this.draw();
+            }
+        }
+
+        for(let i = 0; i < count; i++) particles.push(new Particle());
+
+        function animate(){
+            ctx.clearRect(0, 0, w, h);
+            particles.forEach(p => p.update());
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize',()=>{
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+        })
+    </script>
+</body>
+</html>
