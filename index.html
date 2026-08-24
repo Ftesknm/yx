@@ -11,7 +11,6 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             width: 100vw;
             height: 100vh;
@@ -24,7 +23,6 @@
             align-items: center;
             justify-content: center;
         }
-
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -33,7 +31,6 @@
             height: 100vh;
             z-index: -1;
         }
-
         h1 {
             font-size: 34px;
             text-align: center;
@@ -41,12 +38,10 @@
             text-shadow: 0 0 8px #4fc3ff, 0 0 16px #2196f3, 0 0 30px #1976d2;
             animation: textGlow 3s ease-in-out infinite alternate;
         }
-
         @keyframes textGlow {
             from {text-shadow: 0 0 8px #4fc3ff, 0 0 16px #2196f3;}
             to {text-shadow: 0 0 15px #4fc3ff, 0 0 30px #2196f3, 0 0 45px #0d47a1;}
         }
-
         .info {
             font-size: 18px;
             color: #cce0ff;
@@ -55,7 +50,6 @@
             margin-bottom: 30px;
             text-shadow: 0 0 6px #2196f377;
         }
-
         .desc-box {
             max-width: 720px;
             padding: 20px 25px;
@@ -72,8 +66,6 @@
             text-align: center;
             text-shadow: 0 0 4px #2196f344;
         }
-
-        /* 双下载按钮布局 */
         .download-group {
             display: flex;
             gap: 20px;
@@ -81,7 +73,6 @@
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .download-btn {
             display: flex;
             align-items: center;
@@ -96,17 +87,13 @@
             box-shadow: 0 0 12px #2196f3, 0 0 25px #2196f366;
             transition: 0.3s all ease;
         }
-
         .download-btn:hover {
             transform: scale(1.08);
             box-shadow: 0 0 20px #4fc3ff, 0 0 40px #2196f388;
         }
-
-        /* Win11四格图标 */
         .icon-win {
             font-size: 20px;
         }
-
         .github-box {
             margin-top: 10px;
         }
@@ -127,7 +114,6 @@
         .github-link i {
             font-size: 24px;
         }
-
         .footer {
             position: absolute;
             bottom: 35px;
@@ -139,15 +125,12 @@
 </head>
 <body>
     <canvas id="bg-canvas"></canvas>
-
     <h1>☁オンライン広場DX(p.update)サーバー2__</h1>
-
     <div class="info">
         多人联机游戏<br>
         制作人：张塬林<br>
         制作工具：Turbowarp
     </div>
-
     <div class="desc-box">
         <div class="game-desc">
             本作是一款制作精美的多人联机休闲游戏，画面打磨细致，玩法丰富有趣。
@@ -155,29 +138,34 @@
             邀请好友一同进入线上广场，开启轻松欢乐的联机冒险之旅。
         </div>
     </div>
-
-    <!-- 带Win11四格图标的下载按钮 -->
     <div class="download-group">
         <a href="https://easylink.cc/608gv3" class="download-btn" target="_blank">
             <i class="fa fa-windows icon-win"></i>
-            64位 下载
+            Windows 64位 下载
         </a>
         <a href="https://easylink.cc/2ixxer" class="download-btn" target="_blank">
             <i class="fa fa-windows icon-win"></i>
-            32位 下载
+            Windows 32位 下载
+        </a>
+        <!--安卓32位-->
+        <a href="替换成安卓32位APK链接" class="download-btn" target="_blank">
+            <i class="fa fa-android icon-win"></i>
+            Android 32位 下载
+        </a>
+        <!--安卓64位-->
+        <a href="替换成安卓64位APK链接" class="download-btn" target="_blank">
+            <i class="fa fa-android icon-win"></i>
+            Android 64位 下载
         </a>
     </div>
-
     <div class="github-box">
         <a class="github-link" href="https://github.com/" target="_blank">
             <i class="fa fa-github"></i> GitHub 开源仓库
         </a>
     </div>
-
     <div class="footer">
         © 2026 张塬林 | Turbowarp 制作出品
     </div>
-
     <script>
         const canvas = document.getElementById('bg-canvas');
         const ctx = canvas.getContext('2d');
@@ -185,10 +173,8 @@
         let h = window.innerHeight;
         canvas.width = w;
         canvas.height = h;
-
         let particles = [];
         const count = 80;
-
         class Particle{
             constructor(){
                 this.x = Math.random() * w;
@@ -211,16 +197,13 @@
                 this.draw();
             }
         }
-
         for(let i = 0; i < count; i++) particles.push(new Particle());
-
         function animate(){
             ctx.clearRect(0, 0, w, h);
             particles.forEach(p => p.update());
             requestAnimationFrame(animate);
         }
         animate();
-
         window.addEventListener('resize',()=>{
             w = window.innerWidth;
             h = window.innerHeight;
